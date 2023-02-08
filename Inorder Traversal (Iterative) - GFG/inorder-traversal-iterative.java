@@ -111,27 +111,66 @@ class Node {
         left = right = null;
     }
 } */
+class Pair{
+	int state;
+	Node node;
+
+	Pair(Node node,int state){
+		this.node=node;
+		this.state=state;
+	}
+}
 class Solution
 {
     // Return a list containing the inorder traversal of the given tree
+    ArrayList<Integer> iterative(Node root){
+        ArrayList<Integer>in=new ArrayList<>();
+		ArrayList<Integer>pre=new ArrayList<>();
+		ArrayList<Integer>post=new ArrayList<>();
+		
+		Stack<Pair>st=new Stack<>();
+		st.push(new Pair(root,1));
+
+		while(st.size()>0){
+			Pair p=st.peek();
+
+			if(p.state==1){
+				pre.add(p.node.data);
+				p.state++;
+				if(p.node.left!=null)st.push(new Pair(p.node.left,1));
+			}
+			else if(p.state==2){
+				in.add(p.node.data);
+				p.state++;
+				if(p.node.right!=null)st.push(new Pair(p.node.right,1));
+			}
+			else{
+				post.add(p.node.data);	
+				st.pop();
+			}
+		}
+// 		for(int k:post)System.out.print(k+" ");
+        return in;
+    }
     ArrayList<Integer> inOrder(Node node)
     {
-        ArrayList<Integer>ans=new ArrayList<>();
-        Stack<Node>st=new Stack<>();
+        // ArrayList<Integer>ans=new ArrayList<>();
+        // Stack<Node>st=new Stack<>();
         
-        while(true){
-            if(node!=null){
-                st.push(node);
-                node=node.left;
-            }
-            else{
-                if(st.size()==0)break;
-                node=st.pop();
-                ans.add(node.data);
-                node=node.right;
-            }
-        }
-        return ans;
+        // while(true){
+        //     if(node!=null){
+        //         st.push(node);
+        //         node=node.left;
+        //     }
+        //     else{
+        //         if(st.size()==0)break;
+        //         node=st.pop();
+        //         ans.add(node.data);
+        //         node=node.right;
+        //     }
+        // }
+        // return ans;
+        return iterative(node);
     }
     
     
