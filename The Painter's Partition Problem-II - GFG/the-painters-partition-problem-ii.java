@@ -33,47 +33,9 @@ class GFG
 //User function Template for Java
 
  class Solution{
-    // private static boolean validate(int []arr,int k,int mid){
-    //     int painter=1;
-    //     int sum=0;
-    //     for(int i=0;i<arr.length;i++){
-           
-    //       if(arr[i]>mid)return false;
-    //       if(sum+arr[i]>mid){
-    //           painter++;
-    //           sum=arr[i];
-    //       }
-    //       else sum+=arr[i];
-    //     }
-    //     return painter<=k;
-    // } 
-    // static long minTime(int[] arr,int n,int k){
-    //     int mn=0,sum=0;
-        
-    //     for(int i:arr){
-    //         mn=Math.max(mn,i);
-    //         sum+=i;
-    //     }
-    //     long ans=0;
-    //     int start=mn,end=sum;
-        
-    //     while(start<=end){
-    //         int mid=start+(end-start)/2;
-            
-    //         if(validate(arr,k,mid)){
-    //             end=mid-1;
-    //             ans=mid;
-    //         }
-    //         else {
-    //             start=mid+1;
-    //         }
-    //     }
-    //     return ans;
-    // }
+   
     static long minTime(int[] arr,int n,int k){
-        if(n<=1){
-            return arr[0];
-        }
+      
         long sum=0;
         for(int i=0;i<n;i++)
          sum+=arr[i];
