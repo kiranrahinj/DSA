@@ -97,13 +97,13 @@ class GFG
         int painter=1;
         int sum=0;
         for(int i=0;i<arr.length;i++){
-           
+           sum+=arr[i];
           if(arr[i]>mid)return false;
-          if(sum+arr[i]>mid){
+          if(sum>mid){
               painter++;
               sum=arr[i];
           }
-          else sum+=arr[i];
+          
         }
         return painter<=k;
     }
