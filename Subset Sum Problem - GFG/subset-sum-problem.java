@@ -38,7 +38,7 @@ class Solution{
     
     static int helper(int level,int taken,int arr[],int target,int n){
         //prunning
-        if(level>n)return 0;
+        if(taken>target)return 0;
         
         //base
         if(level==n){
